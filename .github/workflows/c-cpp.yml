@@ -30,7 +30,7 @@ jobs:
         cmake . -DCMAKE_TOOLCHAIN_FILE=../Tools/3dstoolchain.cmake -DCMAKE_MAKE_PROGRAM=make -DCMAKE_C_COMPILER=/opt/devkitpro/devkitARM/bin/arm-none-eabi-gcc -DCMAKE_CXX_COMPILER=/opt/devkitpro/devkitARM/bin/arm-none-eabi-g++
         make
         cd ..
-        ./build_daedalus CTR_RELEASE
+        ./build_daedalus.sh CTR_RELEASE
         mkdir build; cp daedbuild/*.cia build; cp daedbuild/*.3dsx build;
       
     - uses: actions/upload-artifact@master
