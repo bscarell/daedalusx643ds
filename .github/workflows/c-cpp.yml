@@ -26,7 +26,11 @@ jobs:
         make install
         cd ..
         chmod +x build_daedalus.sh
-        ./build_daedalus.sh CTR_RELEASE
+        cd Source
+        cmake .
+        make
+        cd ..
+        ./build_daedalus CTR_RELEASE
         mkdir build; cp daedbuild/*.cia build; cp daedbuild/*.3dsx build;
       
     - uses: actions/upload-artifact@master
