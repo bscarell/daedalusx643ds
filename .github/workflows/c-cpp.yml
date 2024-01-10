@@ -27,7 +27,7 @@ jobs:
         cd ..
         chmod +x build_daedalus.sh
         cd Source
-        cmake . -DCMAKE_TOOLCHAIN_FILE=../tools/3dstoolchain.cmake -DCMAKE_MAKE_PROGRAM=make -DCMAKE_C_COMPILER=arm-none-eabi-gpp CMAKE_CXX_COMPILER=arm-none-eabi-g++
+        cmake . -DCMAKE_TOOLCHAIN_FILE=../tools/3dstoolchain.cmake -DCMAKE_MAKE_PROGRAM=make -DCMAKE_C_COMPILER=arm-none-eabi-gpp -DCMAKE_CXX_COMPILER=arm-none-eabi-g++
         make
         cd ..
         ./build_daedalus CTR_RELEASE
