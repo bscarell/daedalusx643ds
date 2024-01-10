@@ -16,7 +16,7 @@ jobs:
     - uses: actions/checkout@v3
     - name: configure
       run: |
-        git clone --recursive https://github.com/masterfeizz/picaGL.git
+        git clone --recursive https://github.com/wtfloltk/picaGL
         cd picaGL
         make install
         cd ..
