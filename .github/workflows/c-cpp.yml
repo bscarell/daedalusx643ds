@@ -36,7 +36,8 @@ jobs:
     - name: make
       run: |
         make       
-        
+        chmod +x build_daedalus.sh
+        ./build_daedalus.sh
 
     
     - uses: actions/upload-artifact@master
