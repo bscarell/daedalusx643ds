@@ -43,4 +43,4 @@ jobs:
     - uses: actions/upload-artifact@master
       with:
         name: daedalusx64-3ds
-        path: Source
+        path: daedbuild
