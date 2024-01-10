@@ -64,11 +64,8 @@ jobs:
     - name: make
       run: |
         make all         
-
-    - name: move to build dir
-      run: mkdir build; cp daedbuild/*.elf build; cp daedbuild/*.cia build; cp daedbuild/*.3dsx build;
     
     - uses: actions/upload-artifact@master
       with:
         name: daedalusx64-3ds
-        path: build
+        path: daedbuild
