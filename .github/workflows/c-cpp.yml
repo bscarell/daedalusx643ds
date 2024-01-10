@@ -62,7 +62,6 @@ jobs:
 
     - name: make
       run: |
-        cd Source
         make all
 
     - name: build script
