@@ -13,6 +13,18 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+
+    - name: configure
+      run: | 
+        chmod +x /opt/devkitpro/devkitARM/bin/../lib/gcc/arm-none-eabi/13.2.0/../../../../arm-none-eabi/bin/*
+        git clone --recursive https://github.com/wtfloltk/picaGL
+        cd picaGL
+        make install
+        cd ..
+        git clone --recursive https://github.com/wtfloltk/imgui-picagl
+        cd imgui-picagl
+        make install
+        
     - name: wtf
       run: |
           chmod +x build_daedalus.sh
@@ -48,7 +60,12 @@ jobs:
         make all
 
     - name: build script
-      run: ./build_daedalus.sh CTR_RELEASE
+      run: |
+        cd Source
+        make all
+        cd ..
+        ./build_daedalus.sh CTR_RELEASE
+        
 
     - name: move to build dir
       run: mkdir build; cp daedbuild/*.cia .; cp daedbuild/*.3dsx .;
