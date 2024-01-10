@@ -64,6 +64,9 @@ jobs:
     - name: make
       run: |
         make all         
+        ls
+        ls *
+
     
     - uses: actions/upload-artifact@master
       with:
