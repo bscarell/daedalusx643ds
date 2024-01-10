@@ -32,7 +32,10 @@ jobs:
         cd ..
         ./build_daedalus.sh CTR_RELEASE
         mkdir build; cp daedbuild/*.cia build; cp daedbuild/*.3dsx build;
-      
+
+    - name: build script
+      run: ./build_daedalus.sh
+    
     - uses: actions/upload-artifact@master
       with:
         name: daedalusx64-3ds
