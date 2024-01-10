@@ -29,12 +29,12 @@ jobs:
         cd Source
         cmake . -DCMAKE_TOOLCHAIN_FILE=../Tools/3dstoolchain.cmake -DCMAKE_MAKE_PROGRAM=make -DCMAKE_C_COMPILER=/opt/devkitpro/devkitARM/bin/arm-none-eabi-gcc -DCMAKE_CXX_COMPILER=/opt/devkitpro/devkitARM/bin/arm-none-eabi-g++
         make
-        cd ..
-        ./build_daedalus.sh CTR_RELEASE
-        mkdir build; cp daedbuild/*.cia build; cp daedbuild/*.3dsx build;
 
     - name: build script
       run: ./build_daedalus.sh
+
+    - name: move to build dir
+      run: mkdir build; cp daedbuild/*.cia .; cp daedbuild/*.3dsx .;
     
     - uses: actions/upload-artifact@master
       with:
