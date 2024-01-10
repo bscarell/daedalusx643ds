@@ -15,7 +15,8 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: configure
-      run: |
+      run: | 
+        cp /opt/devkitpro/devkitARM/arm-none-eabi/bin/* /opt/devkitpro/devkitARM/bin/../lib/gcc/arm-none-eabi/13.2.0/../../../../arm-none-eabi/bin
         git clone --recursive https://github.com/wtfloltk/picaGL
         cd picaGL
         make install
