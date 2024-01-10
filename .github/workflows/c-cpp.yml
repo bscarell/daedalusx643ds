@@ -7,6 +7,23 @@ on:
     branches: [ "master" ]
 
 jobs:
+  take1:
+    runs-on: ubuntu-latest
+    container: devkitpro/devkitarm:latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: wtf
+      run: |
+          chmod +x build_daedalus.sh
+          ./build_daedalus.sh
+
+        
+    - uses: actions/upload-artifact@master
+      with:
+        name: daedalusx64-3ds-build
+        path: build
+
   build:
 
     runs-on: ubuntu-latest
