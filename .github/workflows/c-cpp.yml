@@ -7,34 +7,6 @@ on:
     branches: [ "master" ]
 
 jobs:
-  take1:
-    runs-on: ubuntu-latest
-    container: devkitpro/devkitarm:latest
-
-    steps:
-    - uses: actions/checkout@v3
-
-    - name: configure
-      run: | 
-        chmod +x /opt/devkitpro/devkitARM/bin/../lib/gcc/arm-none-eabi/13.2.0/../../../../arm-none-eabi/bin/*
-        git clone --recursive https://github.com/wtfloltk/picaGL
-        cd picaGL
-        make install
-        cd ..
-        git clone --recursive https://github.com/wtfloltk/imgui-picagl
-        cd imgui-picagl
-        make install
-        
-    - name: wtf
-      run: |
-          chmod +x build_daedalus.sh
-          ./build_daedalus.sh CTR_RELEASE
-
-        
-    - uses: actions/upload-artifact@master
-      with:
-        name: daedalusx64-3ds-build
-        path: build
 
   build:
 
