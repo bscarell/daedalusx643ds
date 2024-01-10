@@ -35,12 +35,11 @@ jobs:
 
     - name: make
       run: |
-        make all         
-        ls
-        ls *
+        make       
+        
 
     
     - uses: actions/upload-artifact@master
       with:
         name: daedalusx64-3ds
-        path: daedbuild
+        path: Source
