@@ -59,11 +59,13 @@ jobs:
         cmake . -DCMAKE_TOOLCHAIN_FILE=../Tools/3dstoolchain.cmake -DCMAKE_MAKE_PROGRAM=make -DCMAKE_C_COMPILER=/opt/devkitpro/devkitARM/bin/arm-none-eabi-gcc -DCMAKE_CXX_COMPILER=/opt/devkitpro/devkitARM/bin/arm-none-eabi-g++
         make all
 
-    - name: build script
+    - name: make
       run: |
         cd Source
         make all
-        cd ..
+
+    - name: build script
+      run: |
         ./build_daedalus.sh CTR_RELEASE
         
 
