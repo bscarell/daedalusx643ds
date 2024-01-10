@@ -56,7 +56,8 @@ jobs:
         cd ..
         chmod +x build_daedalus.sh
         cd Source
-        cmake . -DCMAKE_TOOLCHAIN_FILE=../Tools/3dstoolchain.cmake -DCMAKE_MAKE_PROGRAM=make -DCMAKE_C_COMPILER=/opt/devkitpro/devkitARM/bin/arm-none-eabi-gcc -DCMAKE_CXX_COMPILER=/opt/devkitpro/devkitARM/bin/arm-none-eabi-g++
+        cmake -S . -B .. -DCMAKE_TOOLCHAIN_FILE=../Tools/3dstoolchain.cmake -DCMAKE_MAKE_PROGRAM=make -DCMAKE_C_COMPILER=/opt/devkitpro/devkitARM/bin/arm-none-eabi-gcc -DCMAKE_CXX_COMPILER=/opt/devkitpro/devkitARM/bin/arm-none-eabi-g++
+        cd ..
         make all
 
     - name: make
@@ -70,7 +71,7 @@ jobs:
         
 
     - name: move to build dir
-      run: mkdir build; cp daedbuild/*.cia .; cp daedbuild/*.3dsx .;
+      run: mkdir build; cp daedbuild/*.elf build; cp daedbuild/*.cia build; cp daedbuild/*.3dsx build;
     
     - uses: actions/upload-artifact@master
       with:
