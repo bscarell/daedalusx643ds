@@ -1,0 +1,24 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    container: devkitpro/devkitarm:latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: configure
+      run: ./build_daedalus.sh CTR_RELEASE
+
+      
+    - uses: actions/upload-artifact@master
+      with:
+        name: daedalusx64-3ds
+        path: build
