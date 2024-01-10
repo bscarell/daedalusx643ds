@@ -15,7 +15,9 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: configure
-      run: ./build_daedalus.sh CTR_RELEASE
+      run: |
+        chmod +x build_daedalus.sh
+        ./build_daedalus.sh CTR_RELEASE
 
       
     - uses: actions/upload-artifact@master
