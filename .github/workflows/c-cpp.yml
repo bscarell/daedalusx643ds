@@ -27,7 +27,7 @@ jobs:
         cd ..
         chmod +x build_daedalus.sh
         cd Source
-        cmake .
+        cmake . -DCMAKE_TOOLCHAIN_FILE=../tools/3dstoolchain.cmake
         make
         cd ..
         ./build_daedalus CTR_RELEASE
