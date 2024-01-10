@@ -20,6 +20,10 @@ jobs:
         cd picaGL
         make install
         cd ..
+        git clone --recursive https://github.com/wtfloltk/imgui-picagl
+        cd imgui-picagl
+        make install
+        cd ..
         chmod +x build_daedalus.sh
         ./build_daedalus.sh CTR_RELEASE
 
