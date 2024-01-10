@@ -16,7 +16,7 @@ jobs:
     - name: wtf
       run: |
           chmod +x build_daedalus.sh
-          ./build_daedalus.sh
+          ./build_daedalus.sh CTR_RELEASE
 
         
     - uses: actions/upload-artifact@master
@@ -45,10 +45,10 @@ jobs:
         chmod +x build_daedalus.sh
         cd Source
         cmake . -DCMAKE_TOOLCHAIN_FILE=../Tools/3dstoolchain.cmake -DCMAKE_MAKE_PROGRAM=make -DCMAKE_C_COMPILER=/opt/devkitpro/devkitARM/bin/arm-none-eabi-gcc -DCMAKE_CXX_COMPILER=/opt/devkitpro/devkitARM/bin/arm-none-eabi-g++
-        make
+        make all
 
     - name: build script
-      run: ./build_daedalus.sh
+      run: ./build_daedalus.sh CTR_RELEASE
 
     - name: move to build dir
       run: mkdir build; cp daedbuild/*.cia .; cp daedbuild/*.3dsx .;
