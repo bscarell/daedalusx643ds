@@ -1,0 +1,46 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+    container: devkitpro/devkitarm:latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: configure
+      run: | 
+        dkp-pacman -S 3ds-portlibs libctru --noconfirm --needed
+        chmod +x /opt/devkitpro/devkitARM/bin/../lib/gcc/arm-none-eabi/13.2.0/../../../../arm-none-eabi/bin/*
+        git clone --recursive https://github.com/wtfloltk/picaGL
+        cd picaGL
+        make install
+        cd ..
+        git clone --recursive https://github.com/wtfloltk/imgui-picagl
+        cd imgui-picagl
+        make install
+        cd ..
+        chmod +x build_daedalus.sh
+        cd Source
+        cmake -S . -B .. -DCMAKE_TOOLCHAIN_FILE=../Tools/3dstoolchain.cmake -DCMAKE_MAKE_PROGRAM=make -DCMAKE_C_COMPILER=/opt/devkitpro/devkitARM/bin/arm-none-eabi-gcc -DCMAKE_CXX_COMPILER=/opt/devkitpro/devkitARM/bin/arm-none-eabi-g++
+        cd ..
+        make all
+
+    - name: make
+      run: |
+        make       
+        chmod +x build_daedalus.sh
+        ./build_daedalus.sh CTR_RELEASE
+
+    
+    - uses: actions/upload-artifact@master
+      with:
+        name: daedalusx64-3ds
+        path: daedbuild

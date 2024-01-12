@@ -338,7 +338,7 @@ static void Initialize()
         gfxSet3D(true);
     }
 	
-	pglInitEx(0x080000, 0x040000);
+	pglInit();
 
 	strcpy(gDaedalusExePath, DAEDALUS_CTR_PATH(""));
 	strcpy(g_DaedalusConfig.mSaveDir, DAEDALUS_CTR_PATH("SaveGames/"));
